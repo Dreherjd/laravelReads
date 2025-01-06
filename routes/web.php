@@ -3,10 +3,21 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\IndexController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index', [IndexController::class, 'index']);
 });
+Route::get('/index', function () {
+    return view('index', [IndexController::class, 'index']);
+});
+Route::controller(BookController::class)->group(function () {
+    Route::get('/books', 'bookIndex');
+    Route::get('/create', 'create');
+    Route::get('/{book_id}', 'show')->name('books')->whereNumber('book_id');
+    Route::post('/books', 'store');
+});
+
 // # Book Routes #
 // Route::prefix('books')->group(function () {
 //     Route::controller(BookController::class)->group(function () {
