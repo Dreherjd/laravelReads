@@ -5,10 +5,11 @@ use App\Models\Book_review;
 
 class IndexController extends Controller
 {
+
     public function index()
     {
         $posts = Book_review::all();
-        return view('index',['posts' => $posts]);
+        return view('index', compact('posts'));
     }
 
 

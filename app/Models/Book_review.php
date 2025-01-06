@@ -8,7 +8,7 @@ class Book_review extends Model
 {
 
     protected $table ="book_reviews";
-    protected $primary_key = 'book_review_id';
+    protected $primaryKey = 'book_review_id';
     protected $fillable = [
         'book_review_created',
         'book_review_score',
